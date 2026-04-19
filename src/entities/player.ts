@@ -102,3 +102,30 @@ export class Player {
 		return this.y - (TILE_SIZE - this.h);
 	}
 }
+
+export interface MoveContext {
+	downHeld: boolean;
+	grounded: boolean;
+	inBarZone: boolean;
+	running: boolean;
+	unlocked: Set<string>;
+}
+
+export type SpecialMove =
+	| "equilibrio"
+	| "lateral"
+	| "paloma"
+	| "puente"
+	| "rondada"
+	| "spagat"
+	| "voltereta";
+
+export function resolveSpecialMove(ctx: MoveContext): SpecialMove | null {
+	if (!ctx.grounded && ctx.unlocked.has("paloma")) return "paloma";
+	if (ctx.inBarZone && ctx.unlocked.has("equilibrio")) return "equilibrio";
+	if (ctx.downHeld && !ctx.running && ctx.unlocked.has("puente")) return "puente";
+	if (ctx.downHeld && ctx.running && ctx.unlocked.has("spagat")) return "spagat";
+	if (!ctx.running && ctx.unlocked.has("voltereta")) return "voltereta";
+	if (ctx.running && ctx.unlocked.has("lateral")) return "lateral";
+	return null;
+}
