@@ -24,7 +24,7 @@ export class ReceptionBar {
 	}
 
 	evaluate(pos: number): ReceptionResult {
-		const dist = Math.abs(pos - 0.5);
+		const dist = Math.round(Math.abs(pos - 0.5) * 1e9) / 1e9;
 		if (dist <= this.perfectRadius) return "perfect";
 		if (dist < this.zoneRadius) return "good";
 		return "miss";
