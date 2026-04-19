@@ -1,8 +1,8 @@
 export class Camera {
 	x = 0;
 	y = 0;
-	private levelW = Infinity;
-	private levelH = Infinity;
+	private levelW = Number.POSITIVE_INFINITY;
+	private levelH = Number.POSITIVE_INFINITY;
 	private lerp = 0.1;
 
 	constructor(

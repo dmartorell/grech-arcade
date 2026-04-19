@@ -23,16 +23,17 @@ export function resolveTileCollisionsX(
 	const bottom = Math.floor((y + h - 1) / tileSize);
 	const right = Math.floor((x + w - 1) / tileSize);
 	const left = Math.floor(x / tileSize);
+	let resolvedX = x;
 
 	for (let ty = top; ty <= bottom; ty++) {
 		if (isSolid(right, ty)) {
-			x = right * tileSize - w;
+			resolvedX = right * tileSize - w;
 		}
 		if (isSolid(left, ty)) {
-			x = (left + 1) * tileSize;
+			resolvedX = (left + 1) * tileSize;
 		}
 	}
-	return x;
+	return resolvedX;
 }
 
 export interface TileCollisionResultY {
@@ -55,16 +56,17 @@ export function resolveTileCollisionsY(
 	const right = Math.floor((x + w - 1) / tileSize);
 	const bottom = Math.floor((y + h - 1) / tileSize);
 	const top = Math.floor(y / tileSize);
+	let resolvedY = y;
 
 	for (let tx = left; tx <= right; tx++) {
 		if (isSolid(tx, bottom)) {
-			y = bottom * tileSize - h;
+			resolvedY = bottom * tileSize - h;
 			grounded = true;
 		}
 		if (isSolid(tx, top)) {
-			y = (top + 1) * tileSize;
+			resolvedY = (top + 1) * tileSize;
 			hitCeiling = true;
 		}
 	}
-	return { y, grounded, hitCeiling };
+	return { y: resolvedY, grounded, hitCeiling };
 }
