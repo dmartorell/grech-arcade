@@ -1,12 +1,19 @@
+import type { CollectibleType } from "../entities/collectible";
+import type { ObstacleConfig } from "../entities/obstacle";
 import { TILE_SIZE } from "../utils/constants";
 
 export interface LevelData {
-	width: number;
 	height: number;
-	tileSize: number;
-	terrain: number[];
 	spawnX: number;
 	spawnY: number;
+	terrain: number[];
+	tileSize: number;
+	width: number;
+}
+
+export interface LevelObjectData {
+	collectibles: { type: CollectibleType; x: number; y: number }[];
+	obstacles: ObstacleConfig[];
 }
 
 const W = 50;
