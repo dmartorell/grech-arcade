@@ -46,3 +46,25 @@ export const testLevel: LevelData = {
 	spawnX: 2 * TILE_SIZE,
 	spawnY: (H - 2) * TILE_SIZE,
 };
+
+export const testLevelObjects: LevelObjectData = {
+	collectibles: [
+		{ type: "gold", x: 4 * TILE_SIZE, y: (H - 3) * TILE_SIZE },
+		{ type: "silver", x: 12 * TILE_SIZE, y: (H - 5) * TILE_SIZE },
+		{ type: "bronze", x: 20 * TILE_SIZE, y: (H - 5) * TILE_SIZE },
+		{ type: "cup", x: 30 * TILE_SIZE, y: (H - 4) * TILE_SIZE },
+		{ type: "trophy", x: 44 * TILE_SIZE, y: (H - 5) * TILE_SIZE },
+	],
+	obstacles: [
+		{ h: TILE_SIZE, mobile: false, w: TILE_SIZE, x: 7 * TILE_SIZE, y: (H - 2) * TILE_SIZE },
+		{
+			h: TILE_SIZE,
+			mobile: true,
+			moveRangeX: 3 * TILE_SIZE,
+			moveSpeed: 50,
+			w: TILE_SIZE,
+			x: 24 * TILE_SIZE,
+			y: (H - 2) * TILE_SIZE,
+		},
+	],
+};
