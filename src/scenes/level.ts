@@ -21,6 +21,7 @@ export class LevelScene implements Scene {
 		private game: Game,
 		private levelData: LevelData,
 		private objectData?: LevelObjectData,
+		private onComplete?: (score: number) => void,
 	) {}
 
 	enter() {
@@ -64,6 +65,11 @@ export class LevelScene implements Scene {
 
 		if (this.player.y > this.level.height * TILE_SIZE) {
 			this.die();
+			return;
+		}
+
+		if (this.player.x >= (this.level.width - 2) * TILE_SIZE) {
+			this.onComplete?.(this.score);
 		}
 	}
 

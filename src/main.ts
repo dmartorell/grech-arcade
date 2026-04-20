@@ -37,7 +37,10 @@ const levelSelect = new LevelSelectScene(game, saveData.levelsCompleted, (index)
 	game.scenes.switchTo("level");
 });
 
-const level = new LevelScene(game, testLevel, testLevelObjects);
+const level = new LevelScene(game, testLevel, testLevelObjects, (score) => {
+	lastLevelScore = score;
+	game.scenes.switchTo("reception");
+});
 
 const reception = new ReceptionScene(game, currentLevelIndex, (result) => {
 	lastReceptionResult = result;

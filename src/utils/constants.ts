@@ -8,7 +8,7 @@ export const GRAVITY = 980;
 export const GRAVITY_DOWN_MULT = 1.8;
 export const JUMP_VELOCITY = -340;
 export const JUMP_CUT_MULT = 0.4;
-export const MOVE_SPEED = 120;
+export const MOVE_SPEED = 180;
 export const COYOTE_FRAMES = 5;
 export const JUMP_BUFFER_FRAMES = 5;
 
